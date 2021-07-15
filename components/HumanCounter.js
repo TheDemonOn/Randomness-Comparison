@@ -1,24 +1,31 @@
-import React, { useState, useEffect, useContext, createContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import InputSanitizing from './InputSanitizing'
-// import HumanCount from './HumanCount'
 
-function HumanCounter({ humanGeneration, humanRandomCount, setHumanRandomCount }) {
+function HumanCounter({
+	humanGeneration,
+	setHumanGeneration,
+	humanRandomCount,
+	setHumanRandomCount,
+	deleteHuman,
+}) {
 	const updateHumanCount = (value) => {
+		console.log(value)
 		let numValue = parseInt(value, 10)
 		if (Number.isInteger(numValue)) {
-			humanGeneration.push(value)
+			setHumanGeneration((prev) => prev + value)
+			// humanGeneration = humanGeneration + value
+			console.log(humanGeneration)
 			setHumanRandomCount((prev) => prev + 1)
 			document.getElementById('humanInput').value = ''
 		}
 	}
+
 	useEffect(() => {
 		document.getElementById('humanInput').addEventListener('keydown', InputSanitizing)
 	}, [])
 
 	return (
-		<div>
-			<h1>{humanGeneration}</h1>
-			<h2>{humanRandomCount}</h2>
+		<>
 			<input
 				type="text"
 				maxLength="2"
@@ -26,7 +33,7 @@ function HumanCounter({ humanGeneration, humanRandomCount, setHumanRandomCount }
 				onChange={(e) => updateHumanCount(e.target.value)}
 			></input>
 			{/* <HumanCount humanGeneration={humanGeneration}></HumanCount> */}
-		</div>
+		</>
 	)
 }
 

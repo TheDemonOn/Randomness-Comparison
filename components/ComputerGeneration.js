@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 
 // ComputerGeneration takes in the function to send state to the parent and how many user nums were generated
-function ComputerGeneration({ setComputerGeneration, humanRandomCount }) {
+
+function ComputerGeneration({ setComputerGeneration, humanRandomCount = 30 }) {
 	const params = {
 		jsonrpc: '2.0',
 		method: 'generateIntegers',
 		params: {
 			apiKey: '968fe2bd-3631-45d9-aad2-df49e585b679',
-			n: humanRandomCount,
+			n: 30,
 			min: 1,
 			max: 6,
 		},
@@ -36,7 +37,7 @@ function ComputerGeneration({ setComputerGeneration, humanRandomCount }) {
 			})
 	}, [])
 
-	return <div></div>
+	return <></>
 }
 
 export default ComputerGeneration
