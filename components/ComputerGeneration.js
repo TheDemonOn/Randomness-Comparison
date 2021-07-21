@@ -31,6 +31,7 @@ function ComputerGeneration({ setComputerGeneration, humanRandomCount = 30 }) {
 			.then((response) => response.json())
 			.then((data) => {
 				data.result.random.data.forEach((e) => {
+					// This turns each number from the returned array into one string
 					computerData += `${e}`
 				})
 				setComputerGeneration(computerData)

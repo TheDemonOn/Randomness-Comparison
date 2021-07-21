@@ -13,10 +13,18 @@ function HumanCounter({
 		let numValue = parseInt(value, 10)
 		if (Number.isInteger(numValue)) {
 			setHumanGeneration((prev) => prev + value)
-			// humanGeneration = humanGeneration + value
 			console.log(humanGeneration)
 			setHumanRandomCount((prev) => prev + 1)
 			document.getElementById('humanInput').value = ''
+		}
+	}
+
+	const deleteCheck = (e) => {
+		if (e.key === 'Backspace') {
+			setHumanGeneration(humanGeneration.slice(0, humanGeneration.length - 1))
+			if (humanRandomCount > 0) {
+				setHumanRandomCount((prev) => prev - 1)
+			}
 		}
 	}
 
@@ -30,9 +38,9 @@ function HumanCounter({
 				type="text"
 				maxLength="2"
 				id="humanInput"
+				onKeyDown={(e) => deleteCheck(e)}
 				onChange={(e) => updateHumanCount(e.target.value)}
 			></input>
-			{/* <HumanCount humanGeneration={humanGeneration}></HumanCount> */}
 		</>
 	)
 }
