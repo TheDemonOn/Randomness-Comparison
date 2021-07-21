@@ -28,17 +28,16 @@ function HumanCounter({
 		}
 	}
 
-	useEffect(() => {
-		document.getElementById('humanInput').addEventListener('keydown', InputSanitizing)
-	}, [])
-
 	return (
 		<>
 			<input
 				type="text"
 				maxLength="2"
 				id="humanInput"
-				onKeyDown={(e) => deleteCheck(e)}
+				onKeyDown={(e) => {
+					InputSanitizing(e)
+					deleteCheck(e)
+				}}
 				onChange={(e) => updateHumanCount(e.target.value)}
 			></input>
 		</>
