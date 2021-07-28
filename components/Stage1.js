@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import HumanCounter from '../components/HumanCounter'
 import Button from '../components/Button'
+import ComputerGeneration from '../components/ComputerGeneration'
 
 export default function Stage1({
 	humanRandomCount,
@@ -9,6 +10,8 @@ export default function Stage1({
 	humanGeneration,
 	setHumanGeneration,
 	computerGeneration,
+	nextStage,
+	setComputerGeneration,
 }) {
 	return (
 		<>
@@ -26,9 +29,10 @@ export default function Stage1({
 				humanRandomCount={humanRandomCount}
 				setHumanRandomCount={setHumanRandomCount}
 			></HumanCounter>
-			<h1>{computerGeneration}</h1>
+			{/* <h1>{computerGeneration}</h1> */}
+			{/* <ComputerGeneration setComputerGeneration={setComputerGeneration}></ComputerGeneration> */}
 
-			<Button humanRandomCount={humanRandomCount}></Button>
+			<Button humanRandomCount={humanRandomCount} nextStage={nextStage}></Button>
 		</>
 	)
 }
