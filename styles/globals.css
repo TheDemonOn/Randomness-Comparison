@@ -15,7 +15,22 @@ a {
 	box-sizing: border-box;
 }
 
+.graphContainer {
+	display: flex;
+}
+
 .barGraph1 {
-	border: solid;
+	/* border: solid; */
 	width: 30em;
+}
+
+.barGraph2 {
+	/* border: solid; */
+	width: 30em;
+}
+
+.barGraph3 {
+	margin-top: 10em;
+	/* border: solid; */
+	/* width: 30em; */
 }
