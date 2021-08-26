@@ -20,17 +20,18 @@ a {
 }
 
 .barGraph1 {
-	/* border: solid; */
+	border: solid;
 	width: 30em;
 }
 
 .barGraph2 {
-	/* border: solid; */
+	border: solid;
 	width: 30em;
 }
 
 .barGraph3 {
 	margin-top: 10em;
-	/* border: solid; */
-	/* width: 30em; */
+	margin-left: 20em;
+	border: solid;
+	width: 50em;
 }

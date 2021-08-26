@@ -15,9 +15,6 @@ export default function Home() {
 	const [computerGenerationLarge, setComputerGenerationLarge] = useState('123')
 	const large = 1
 	const [largeCount, setLargeCount] = useState(10000)
-	// const updateLargeCount = (value) => {
-	// 	setLargeCount(value)
-	// }
 
 	const [stage, setStage] = useState(1)
 	const nextStage = () => {
@@ -52,15 +49,16 @@ export default function Home() {
 			)
 		case 3:
 			return (
-				<RandomContext.Provider value={[computerGeneration, computerGenerationLarge]}>
-					{/* <ComputerGeneration
-						setComputerGeneration={setComputerGeneration}
+				<>
+					<ComputerGeneration
 						setComputerGenerationLarge={setComputerGenerationLarge}
 						large={large}
 						largeCount={largeCount}
-					></ComputerGeneration> */}
-					<Stage3></Stage3>
-				</RandomContext.Provider>
+					></ComputerGeneration>
+					<RandomContext.Provider value={[computerGeneration, computerGenerationLarge]}>
+						<Stage3 largeCount={largeCount}></Stage3>
+					</RandomContext.Provider>
+				</>
 			)
 	}
 

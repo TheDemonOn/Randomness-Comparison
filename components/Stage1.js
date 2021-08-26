@@ -15,7 +15,7 @@ export default function Stage1({
 	return (
 		<>
 			<Head>
-				<title>Rhyme Test</title>
+				<title>How random are you?</title>
 			</Head>
 			<h1>Hullo! Type random Zeros and Ones!</h1>
 			<h6>and only numbers you son of a...</h6>
@@ -27,6 +27,7 @@ export default function Stage1({
 				setHumanGeneration={setHumanGeneration}
 				humanRandomCount={humanRandomCount}
 				setHumanRandomCount={setHumanRandomCount}
+				nextStage={nextStage}
 			></HumanCounter>
 
 			<Button humanRandomCount={humanRandomCount} nextStage={nextStage}></Button>

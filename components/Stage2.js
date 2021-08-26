@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import Head from 'next/head'
 import { Bar } from 'react-chartjs-2'
 import { RandomContext } from './RandomContext'
 import InputSanitizing2 from './InputSanitizing2'
@@ -16,19 +17,13 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 	let pseudoStreakData = [0]
 	let pseudoDataRaw = []
 
-	// let computerLargeStreakData = [0]
-	// let pseudoLargeData = [0, 0]
-	// let pseudoLargeStreakData = [0]
-
 	let dynamicLabels = [-99]
-	// let dynamicLabelsLarge = [-99]
 
 	if (useContext(RandomContext)[0] === '123') {
 		// wait
 	} else {
 		let unprocessedData = useContext(RandomContext)[0]
 		let unprocessedHumanData = humanGeneration
-		// let computerLargeDataRaw = useContext(RandomContext)[1]
 		// True Random
 		unprocessedData.forEach((e) => {
 			switch (e) {
@@ -115,46 +110,6 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 			}
 		}
 
-		// // True Random Large
-		// let computerLargeStreak = 0
-		// for (let i = 1; i <= computerLargeDataRaw.length; i++) {
-		// 	if (computerLargeDataRaw[i] === computerLargeDataRaw[i - 1]) {
-		// 		// Continue the streak
-		// 		computerLargeStreak++
-		// 	} else {
-		// 		// Start a new streak
-		// 		if (computerLargeStreakData[computerLargeStreak]) {
-		// 			computerLargeStreakData[computerLargeStreak] =
-		// 				computerLargeStreakData[computerLargeStreak] + 1
-		// 		} else {
-		// 			computerLargeStreakData[computerLargeStreak] = 1
-		// 		}
-		// 		computerLargeStreak = 0
-		// 	}
-		// }
-
-		// // Pseudo-Random Large
-		// for (let i = 0; i < 10000; i++) {
-		// 	let random = Math.floor(Math.random() * 2)
-		// 	pseudoLargeData.push(random)
-		// }
-
-		// let pseudoLargeStreak = 0
-		// for (let i = 1; i <= pseudoLargeData.length; i++) {
-		// 	if (pseudoLargeData[i] === pseudoLargeData[i - 1]) {
-		// 		// Continue the streak
-		// 		pseudoLargeStreak++
-		// 	} else {
-		// 		// Start a new streak
-		// 		if (pseudoLargeStreakData[pseudoLargeStreak]) {
-		// 			pseudoLargeStreakData[pseudoLargeStreak] = pseudoLargeStreakData[pseudoLargeStreak] + 1
-		// 		} else {
-		// 			pseudoLargeStreakData[pseudoLargeStreak] = 1
-		// 		}
-		// 		pseudoLargeStreak = 0
-		// 	}
-		// }
-
 		// Create labels
 		let largestLength = Math.max(
 			computerStreakData.length,
@@ -162,14 +117,9 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 			pseudoStreakData.length
 		)
 
-		// let largestLengthLarge = Math.max(computerLargeStreakData.length, pseudoLargeStreakData.length)
-
 		for (let i = 0; i < largestLength; i++) {
 			dynamicLabels[i] = i + 1
 		}
-		// for (let i = 0; i < largestLengthLarge; i++) {
-		// 	dynamicLabelsLarge[i] = i + 1
-		// }
 		loadSwitch = 0
 	}
 
@@ -335,60 +285,6 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 		],
 	}
 
-	// const computerLarge = {
-	// 	labels: dynamicLabelsLarge,
-	// 	datasets: [
-	// 		{
-	// 			label: 'Amount of times that streak appeared',
-	// 			data: computerLargeStreakData,
-	// 			backgroundColor: [
-	// 				'rgba(255, 99, 132, 0.2)',
-	// 				'rgba(54, 162, 235, 0.2)',
-	// 				'rgba(255, 206, 86, 0.2)',
-	// 				'rgba(75, 192, 192, 0.2)',
-	// 				'rgba(153, 102, 255, 0.2)',
-	// 				'rgba(255, 159, 64, 0.2)',
-	// 			],
-	// 			borderColor: [
-	// 				'rgba(255, 99, 132, 1)',
-	// 				'rgba(54, 162, 235, 1)',
-	// 				'rgba(255, 206, 86, 1)',
-	// 				'rgba(75, 192, 192, 1)',
-	// 				'rgba(153, 102, 255, 1)',
-	// 				'rgba(255, 159, 64, 1)',
-	// 			],
-	// 			borderWidth: 1,
-	// 		},
-	// 	],
-	// }
-
-	// const pseudoLarge = {
-	// 	labels: dynamicLabelsLarge,
-	// 	datasets: [
-	// 		{
-	// 			label: '# of that number appearing',
-	// 			data: pseudoLargeStreakData,
-	// 			backgroundColor: [
-	// 				'rgba(255, 99, 132, 0.2)',
-	// 				'rgba(54, 162, 235, 0.2)',
-	// 				'rgba(255, 206, 86, 0.2)',
-	// 				'rgba(75, 192, 192, 0.2)',
-	// 				'rgba(153, 102, 255, 0.2)',
-	// 				'rgba(255, 159, 64, 0.2)',
-	// 			],
-	// 			borderColor: [
-	// 				'rgba(255, 99, 132, 1)',
-	// 				'rgba(54, 162, 235, 1)',
-	// 				'rgba(255, 206, 86, 1)',
-	// 				'rgba(75, 192, 192, 1)',
-	// 				'rgba(153, 102, 255, 1)',
-	// 				'rgba(255, 159, 64, 1)',
-	// 			],
-	// 			borderWidth: 1,
-	// 		},
-	// 	],
-	// }
-
 	const options = {
 		responsive: true,
 		scales: {
@@ -409,7 +305,6 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 		if (e.key === 'Enter') {
 			let num = document.getElementById('largeInput').value
 			let numValue = parseInt(num, 10)
-			console.log(num, numValue)
 			setLargeCount(numValue)
 			nextStage()
 		}
@@ -417,7 +312,6 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 	const NextButton = () => {
 		let num = document.getElementById('largeInput').value
 		let numValue = parseInt(num, 10)
-		console.log(num, numValue)
 		setLargeCount(numValue)
 		nextStage()
 	}
@@ -426,17 +320,23 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 		// Waiting for random numbers from API
 		return (
 			<>
+				<Head>
+					<title>Loading...</title>
+				</Head>
 				<h1>Computing numbers...</h1>
 			</>
 		)
 	} else {
 		return (
 			<>
+				<Head>
+					<title>Your Results</title>
+				</Head>
 				<div className="graphContainer">
 					<div className="barGraph1">
 						<h1>Distribution of 1's and 0's</h1>
 						<h1>Human Random</h1>
-						<h1>{humanGeneration.humanGeneration}</h1>
+						<h1>{humanGeneration}</h1>
 						<Bar data={humanBarData} options={options}></Bar>
 						<h1>True Random</h1>
 						<h1>{useContext(RandomContext)[0]}</h1>
@@ -448,13 +348,13 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 					<div className="barGraph2">
 						<h1>Distribution of streaks</h1>
 						<h1>Human Random</h1>
-						<h1>{humanGeneration.humanGeneration}</h1>
+						<h1>place</h1>
 						<Bar data={humanStreakBarData} options={options}></Bar>
 						<h1>True Random</h1>
-						<h1>{useContext(RandomContext)[0]}</h1>
+						<h1>place</h1>
 						<Bar data={computerStreakBarData} options={options}></Bar>
 						<h1>Pseudo-random</h1>
-						<h1>{pseudoDataRaw}</h1>
+						<h1>place</h1>
 						<Bar data={pseudoStreakBarData} options={options}></Bar>
 					</div>
 					<div className="barGraph3">
@@ -471,18 +371,6 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 						></input>
 						<Button nextStage={NextButton}></Button>
 					</div>
-					{/* <div className="barGraph3">
-						<h1>Distributions with larger size</h1>
-						<h1>Human Random</h1>
-						<h1>Too large</h1>
-						<Bar data={humanStreakBarData} options={options}></Bar>
-						<h1>True Random</h1>
-						<h1>Too large</h1>
-						<Bar data={computerLarge} options={options}></Bar>
-						<h1>Pseudo-random</h1>
-						<h1>Too large</h1>
-						<Bar data={pseudoLarge} options={options}></Bar>
-					</div> */}
 				</div>
 			</>
 		)

@@ -7,6 +7,7 @@ function HumanCounter({
 	humanRandomCount,
 	setHumanRandomCount,
 	deleteHuman,
+	nextStage,
 }) {
 	const updateHumanCount = (value) => {
 		console.log(value)
@@ -28,6 +29,12 @@ function HumanCounter({
 		}
 	}
 
+	const EnterCheck = (e) => {
+		if (e.key === 'Enter') {
+			nextStage()
+		}
+	}
+
 	return (
 		<>
 			<input
@@ -37,6 +44,7 @@ function HumanCounter({
 				onKeyDown={(e) => {
 					InputSanitizing(e)
 					deleteCheck(e)
+					EnterCheck(e)
 				}}
 				onChange={(e) => updateHumanCount(e.target.value)}
 			></input>
