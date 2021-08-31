@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import Head from 'next/head'
 import { Bar } from 'react-chartjs-2'
 import { RandomContext } from './RandomContext'
+import Button from './Button'
+import InputSanitizing2 from './InputSanitizing2'
 
-export default function Stage3({ largeCount }) {
+export default function Stage3({ largeCount, reroll, setLargeCount }) {
 	console.log(useContext(RandomContext)[1])
 
 	let loadSwitch = 1
@@ -16,6 +18,9 @@ export default function Stage3({ largeCount }) {
 	let pseudoLargeStreakData = [0]
 
 	let dynamicLabelsLarge = [-99]
+
+	let computerLargeVisual = []
+	let pseudoLargeVisual = []
 
 	if (useContext(RandomContext)[1] === '123') {
 		// wait
@@ -33,13 +38,18 @@ export default function Stage3({ largeCount }) {
 					break
 			}
 		})
-
 		let computerLargeStreak = 0
+		// ComputerLargeStreak is the index position not the count, so the actual count is 1 more
+		let computerLargeStreakVisual = [0, 0]
 		for (let i = 1; i <= computerLargeDataRaw.length; i++) {
 			if (computerLargeDataRaw[i] === computerLargeDataRaw[i - 1]) {
 				// Continue the streak
 				computerLargeStreak++
 			} else {
+				if (computerLargeStreakVisual[0] < computerLargeStreak) {
+					computerLargeStreakVisual[0] = computerLargeStreak + 1
+					computerLargeStreakVisual[1] = computerLargeDataRaw[i - 1]
+				}
 				// Start a new streak
 				if (computerLargeStreakData[computerLargeStreak]) {
 					computerLargeStreakData[computerLargeStreak] =
@@ -48,6 +58,14 @@ export default function Stage3({ largeCount }) {
 					computerLargeStreakData[computerLargeStreak] = 1
 				}
 				computerLargeStreak = 0
+			}
+		}
+		if (computerLargeStreak) {
+			if (computerLargeStreakData[computerLargeStreak]) {
+				computerLargeStreakData[computerLargeStreak] =
+					computerLargeStreakData[computerLargeStreak] + 1
+			} else {
+				computerLargeStreakData[computerLargeStreak] = 1
 			}
 		}
 
@@ -69,12 +87,18 @@ export default function Stage3({ largeCount }) {
 		})
 
 		let pseudoLargeStreak = 0
+		let pseudoLargeStreakVisual = [0, 0]
 		for (let i = 1; i <= pseudoLargeData.length; i++) {
+			console.log(pseudoLargeData[i], pseudoLargeData[i - 1])
 			if (pseudoLargeData[i] === pseudoLargeData[i - 1]) {
 				// Continue the streak
 				pseudoLargeStreak++
 			} else {
 				// Start a new streak
+				if (pseudoLargeStreakVisual[0] < pseudoLargeStreak) {
+					pseudoLargeStreakVisual[0] = pseudoLargeStreak + 1
+					pseudoLargeStreakVisual[1] = pseudoLargeData[i - 1]
+				}
 				if (pseudoLargeStreakData[pseudoLargeStreak]) {
 					pseudoLargeStreakData[pseudoLargeStreak] = pseudoLargeStreakData[pseudoLargeStreak] + 1
 				} else {
@@ -83,12 +107,31 @@ export default function Stage3({ largeCount }) {
 				pseudoLargeStreak = 0
 			}
 		}
+		if (pseudoLargeStreak) {
+			if (pseudoLargeStreakData[pseudoLargeStreak]) {
+				pseudoLargeStreakData[pseudoLargeStreak] = pseudoLargeStreakData[pseudoLargeStreak] + 1
+			} else {
+				pseudoLargeStreakData[pseudoLargeStreak] = 1
+			}
+		}
 
 		let largestLengthLarge = Math.max(computerLargeStreakData.length, pseudoLargeStreakData.length)
 
 		for (let i = 0; i < largestLengthLarge; i++) {
 			dynamicLabelsLarge[i] = i + 1
 		}
+
+		computerLargeVisual.length = computerLargeStreakData.length
+		computerLargeVisual.fill(computerLargeStreakVisual[1])
+
+		pseudoLargeVisual.length = pseudoLargeStreakData.length
+		pseudoLargeVisual.fill(pseudoLargeStreakVisual[1])
+
+		// computerLargeVisual.length = computerLargeStreakVisual[0]
+		// computerLargeVisual.fill(computerLargeStreakVisual[1])
+
+		// pseudoLargeVisual.length = pseudoLargeStreakVisual[0]
+		// pseudoLargeVisual.fill(pseudoLargeStreakVisual[1])
 
 		loadSwitch = 0
 	}
@@ -217,7 +260,19 @@ export default function Stage3({ largeCount }) {
 		},
 	}
 
+	const EnterCheck = (e) => {
+		if (e.key === 'Enter') {
+			let num = document.getElementById('rerollInput').value
+			let numValue = parseInt(num, 10)
+			if (numValue > 0) {
+				setLargeCount(numValue)
+			}
+			reroll()
+		}
+	}
+
 	if (loadSwitch) {
+		console.log('it got here')
 		return (
 			<>
 				<Head>
@@ -249,6 +304,26 @@ export default function Stage3({ largeCount }) {
 						<h1>Pseudo-random</h1>
 						{/* <h1>Too large</h1> */}
 						<Bar data={pseudoLarge} options={options}></Bar>
+					</div>
+					<div className="barGraph3">
+						<h1>True Random</h1>
+						<div>Longest Streak: {computerLargeVisual}</div>
+						<h1>Pseudo-random</h1>
+						<div>Longest Streak: {pseudoLargeVisual}</div>
+					</div>
+					<div className="barGraph3">
+						<h1>Options</h1>
+						<Button nextStage={reroll} text={'Reroll'}></Button>
+						<input
+							type="text"
+							placeholder="How many?"
+							maxLength="4"
+							id="rerollInput"
+							onKeyDown={(e) => {
+								InputSanitizing2(e)
+								EnterCheck(e)
+							}}
+						></input>
 					</div>
 				</div>
 			</>

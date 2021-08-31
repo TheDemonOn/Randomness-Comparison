@@ -1,4 +1,5 @@
 import React, { useEffect, useState, createContext } from 'react'
+import Head from 'next/head'
 import ComputerGeneration from '../components/ComputerGeneration'
 import Stage1 from '../components/Stage1'
 import Stage2 from '../components/Stage2'
@@ -19,6 +20,16 @@ export default function Home() {
 	const [stage, setStage] = useState(1)
 	const nextStage = () => {
 		setStage((prev) => prev + 1)
+	}
+	const reroll = () => {
+		// This refreshes the component and makes it retrieve new data
+		let currentStage = stage
+		setStage((prev) => prev + 9999)
+		setComputerGeneration('123')
+		setComputerGenerationLarge('123')
+		setTimeout(() => {
+			setStage(currentStage)
+		}, 1)
 	}
 
 	switch (stage) {
@@ -56,8 +67,17 @@ export default function Home() {
 						largeCount={largeCount}
 					></ComputerGeneration>
 					<RandomContext.Provider value={[computerGeneration, computerGenerationLarge]}>
-						<Stage3 largeCount={largeCount}></Stage3>
+						<Stage3 largeCount={largeCount} reroll={reroll} setLargeCount={setLargeCount}></Stage3>
 					</RandomContext.Provider>
+				</>
+			)
+		default:
+			return (
+				<>
+					<Head>
+						<title>Loading...</title>
+					</Head>
+					<h1>Computing numbers...</h1>
 				</>
 			)
 	}
