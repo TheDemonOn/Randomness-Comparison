@@ -5,8 +5,14 @@ import { RandomContext } from '../context/RandomContext'
 import Button from './Button'
 import InputSanitizing2 from './InputSanitizing2'
 
-export default function Stage3({ largeCount, reroll, setLargeCount }) {
-	console.log(useContext(RandomContext)[1])
+export default function Stage3({
+	largeCount,
+	reroll,
+	setLargeCount,
+	nextStage,
+	setSideTrackChoice,
+}) {
+	const computerRandomContextRaw = useContext(RandomContext)[1]
 
 	let loadSwitch = 1
 
@@ -271,6 +277,16 @@ export default function Stage3({ largeCount, reroll, setLargeCount }) {
 		}
 	}
 
+	const computerLargeStreak = () => {
+		setSideTrackChoice([computerRandomContextRaw, computerLargeVisual])
+		nextStage()
+	}
+
+	const pseudoLargeStreak = () => {
+		setSideTrackChoice([pseudoLargeData, pseudoLargeVisual])
+		nextStage()
+	}
+
 	if (loadSwitch) {
 		console.log('it got here')
 		return (
@@ -307,9 +323,13 @@ export default function Stage3({ largeCount, reroll, setLargeCount }) {
 					</div>
 					<div className="barGraph3">
 						<h1>True Random</h1>
-						<div>Longest Streak: {computerLargeVisual}</div>
+						<div onClick={computerLargeStreak} id="computerLargeStreak">
+							Longest Streak: {computerLargeVisual}
+						</div>
 						<h1>Pseudo-random</h1>
-						<div>Longest Streak: {pseudoLargeVisual}</div>
+						<div onClick={pseudoLargeStreak} id="pseudoLargeStreak">
+							Longest Streak: {pseudoLargeVisual}
+						</div>
 					</div>
 					<div className="barGraph3">
 						<h1>Options</h1>
@@ -325,6 +345,8 @@ export default function Stage3({ largeCount, reroll, setLargeCount }) {
 							}}
 						></input>
 					</div>
+					<h1>This will be the text you click</h1>
+					<Button nextStage={nextStage} text={'Continue'}></Button>
 				</div>
 			</>
 		)

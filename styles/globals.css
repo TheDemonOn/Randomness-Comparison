@@ -33,3 +33,18 @@ a {
 	border: solid;
 	width: 16em;
 }
+
+.sideTrack {
+	/* border: solid; */
+	word-break: break-all;
+	font-size: 1.5em;
+}
+
+#streak {
+	font-weight: bolder;
+}
+
+p {
+	/* border: solid; */
+	/* float: inline-flex; */
+}

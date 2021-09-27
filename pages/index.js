@@ -4,6 +4,7 @@ import ComputerGeneration from '../components/ComputerGeneration'
 import Stage1 from '../components/Stage1'
 import Stage2 from '../components/Stage2'
 import Stage3 from '../components/Stage3'
+import Stage4 from '../components/Stage4'
 import { RandomContext } from '../context/RandomContext'
 import { ConsistentResult } from '../context/ConsistentResult'
 
@@ -23,6 +24,9 @@ export default function Home() {
 		setStage((prev) => prev + 1)
 	}
 
+	const [sideTrackChoice, setSideTrackChoice] = useState(0)
+
+	// This will determine which data set to use
 	const [generationControl, setGenerationControl] = useState(1)
 
 	const reroll = () => {
@@ -73,14 +77,22 @@ export default function Home() {
 						consistent={1}
 					></ComputerGeneration>
 					<RandomContext.Provider value={[computerGeneration, computerGenerationLarge]}>
-						<Stage3 largeCount={largeCount} reroll={reroll} setLargeCount={setLargeCount}></Stage3>
+						<Stage3
+							largeCount={largeCount}
+							reroll={reroll}
+							setLargeCount={setLargeCount}
+							nextStage={nextStage}
+							setSideTrackChoice={setSideTrackChoice}
+						></Stage3>
 					</RandomContext.Provider>
 				</ConsistentResult.Provider>
 			)
-		// case 4:
-		// 	return (
-		// 		<Stage4></Stage4>
-		// 	)
+		case 4:
+			return (
+				<RandomContext.Provider value={[computerGeneration, computerGenerationLarge]}>
+					<Stage4 generationControl={generationControl} sideTrackChoice={sideTrackChoice}></Stage4>
+				</RandomContext.Provider>
+			)
 		default:
 			return (
 				<>
