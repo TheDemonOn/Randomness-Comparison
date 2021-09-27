@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Head from 'next/head'
 import { Bar } from 'react-chartjs-2'
-import { RandomContext } from './RandomContext'
+import { RandomContext } from '../context/RandomContext'
 import InputSanitizing2 from './InputSanitizing2'
 import Button from './Button'
 

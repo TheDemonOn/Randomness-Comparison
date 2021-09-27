@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Head from 'next/head'
 import { Bar } from 'react-chartjs-2'
-import { RandomContext } from './RandomContext'
+import { RandomContext } from '../context/RandomContext'
 import Button from './Button'
 import InputSanitizing2 from './InputSanitizing2'
 
@@ -264,7 +264,7 @@ export default function Stage3({ largeCount, reroll, setLargeCount }) {
 		if (e.key === 'Enter') {
 			let num = document.getElementById('rerollInput').value
 			let numValue = parseInt(num, 10)
-			if (numValue > 0) {
+			if (numValue > 1) {
 				setLargeCount(numValue)
 			}
 			reroll()

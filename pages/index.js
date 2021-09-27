@@ -3,8 +3,9 @@ import Head from 'next/head'
 import ComputerGeneration from '../components/ComputerGeneration'
 import Stage1 from '../components/Stage1'
 import Stage2 from '../components/Stage2'
-import { RandomContext } from '../components/RandomContext'
 import Stage3 from '../components/Stage3'
+import { RandomContext } from '../context/RandomContext'
+import { ConsistentResult } from '../context/ConsistentResult'
 
 export default function Home() {
 	// Human numbers
@@ -21,6 +22,9 @@ export default function Home() {
 	const nextStage = () => {
 		setStage((prev) => prev + 1)
 	}
+
+	const [generationControl, setGenerationControl] = useState(1)
+
 	const reroll = () => {
 		// This refreshes the component and makes it retrieve new data
 		let currentStage = stage
@@ -60,17 +64,23 @@ export default function Home() {
 			)
 		case 3:
 			return (
-				<>
+				// This context [0] prevents new data being fetched while we are sidestepping, [1] will be the longest streaks [2] is psuedoLarge
+				<ConsistentResult.Provider value={[generationControl, [0, 0], [0]]}>
 					<ComputerGeneration
 						setComputerGenerationLarge={setComputerGenerationLarge}
 						large={large}
 						largeCount={largeCount}
+						consistent={1}
 					></ComputerGeneration>
 					<RandomContext.Provider value={[computerGeneration, computerGenerationLarge]}>
 						<Stage3 largeCount={largeCount} reroll={reroll} setLargeCount={setLargeCount}></Stage3>
 					</RandomContext.Provider>
-				</>
+				</ConsistentResult.Provider>
 			)
+		// case 4:
+		// 	return (
+		// 		<Stage4></Stage4>
+		// 	)
 		default:
 			return (
 				<>

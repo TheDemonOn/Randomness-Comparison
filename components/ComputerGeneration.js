@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { ConsistentResult } from '../context/ConsistentResult'
 
 // ComputerGeneration takes in the function to send state to the parent and how many user nums were generated
 
@@ -8,6 +9,7 @@ function ComputerGeneration({
 	humanRandomCount = 100,
 	large,
 	largeCount = 10000,
+	consistent = 0,
 }) {
 	let params = {
 		jsonrpc: '2.0',
@@ -43,17 +45,39 @@ function ComputerGeneration({
 		body: JSON.stringify(params),
 	}
 
+	let consistencySwitch
+
+	if (consistent === 1) {
+		consistencySwitch = useContext(ConsistentResult)
+	}
+
 	// This works with the API
 	useEffect(() => {
-		fetch('https://api.random.org/json-rpc/4/invoke', options)
-			.then((response) => response.json())
-			.then((data) => {
-				if (large) {
-					setComputerGenerationLarge(data.result.random.data)
-				} else {
-					setComputerGeneration(data.result.random.data)
-				}
-			})
+		if (consistent === 1) {
+			console.log(consistencySwitch[0])
+			// An adittional check to know if we might have to prevent requests
+			if (consistencySwitch[0]) {
+				fetch('https://api.random.org/json-rpc/4/invoke', options)
+					.then((response) => response.json())
+					.then((data) => {
+						if (large) {
+							setComputerGenerationLarge(data.result.random.data)
+						} else {
+							setComputerGeneration(data.result.random.data)
+						}
+					})
+			}
+		} else {
+			fetch('https://api.random.org/json-rpc/4/invoke', options)
+				.then((response) => response.json())
+				.then((data) => {
+					if (large) {
+						setComputerGenerationLarge(data.result.random.data)
+					} else {
+						setComputerGeneration(data.result.random.data)
+					}
+				})
+		}
 	}, [])
 
 	return <></>
