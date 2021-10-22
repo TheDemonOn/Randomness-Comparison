@@ -369,7 +369,7 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 								EnterCheck(e)
 							}}
 						></input>
-						<Button nextStage={NextButton} text={'Continue'}></Button>
+						<Button stageControl={NextButton} text={'Continue'}></Button>
 					</div>
 				</div>
 			</>

@@ -4,6 +4,7 @@ import { Bar } from 'react-chartjs-2'
 import { RandomContext } from '../context/RandomContext'
 import Button from './Button'
 import InputSanitizing2 from './InputSanitizing2'
+import { ConsistentResult } from '../context/ConsistentResult'
 
 export default function Stage3({
 	largeCount,
@@ -11,8 +12,12 @@ export default function Stage3({
 	setLargeCount,
 	nextStage,
 	setSideTrackChoice,
+	setPreviousPseudo,
 }) {
-	const computerRandomContextRaw = useContext(RandomContext)[1]
+	let generationController = useContext(ConsistentResult)
+	console.log(generationController)
+
+	let computerRandomContextRaw = useContext(RandomContext)[1]
 
 	let loadSwitch = 1
 
@@ -75,69 +80,69 @@ export default function Stage3({
 			}
 		}
 
-		// Pseudo-Random Large
-		for (let i = 0; i < largeCount; i++) {
-			let random = Math.floor(Math.random() * 2)
-			pseudoLargeData.push(random)
-		}
-
-		pseudoLargeData.forEach((e) => {
-			switch (e) {
-				case 0:
-					pseudoRandomCount[0] = pseudoRandomCount[0] + 1
-					break
-				case 1:
-					pseudoRandomCount[1] = pseudoRandomCount[1] + 1
-					break
-			}
-		})
-
 		let pseudoLargeStreak = 0
-		let pseudoLargeStreakVisual = [0, 0]
-		for (let i = 1; i <= pseudoLargeData.length; i++) {
-			console.log(pseudoLargeData[i], pseudoLargeData[i - 1])
-			if (pseudoLargeData[i] === pseudoLargeData[i - 1]) {
-				// Continue the streak
-				pseudoLargeStreak++
-			} else {
-				// Start a new streak
-				if (pseudoLargeStreakVisual[0] < pseudoLargeStreak) {
-					pseudoLargeStreakVisual[0] = pseudoLargeStreak + 1
-					pseudoLargeStreakVisual[1] = pseudoLargeData[i - 1]
+		var pseudoLargeStreakVisual = [0, 0]
+
+		if (generationController[0] === 1) {
+			console.log('Does this happen Desuka')
+			// Pseudo-Random Large
+			for (let i = 0; i < largeCount; i++) {
+				let random = Math.floor(Math.random() * 2)
+				pseudoLargeData.push(random)
+			}
+
+			pseudoLargeData.forEach((e) => {
+				switch (e) {
+					case 0:
+						pseudoRandomCount[0] = pseudoRandomCount[0] + 1
+						break
+					case 1:
+						pseudoRandomCount[1] = pseudoRandomCount[1] + 1
+						break
 				}
+			})
+
+			for (let i = 1; i <= pseudoLargeData.length; i++) {
+				if (pseudoLargeData[i] === pseudoLargeData[i - 1]) {
+					// Continue the streak
+					pseudoLargeStreak++
+				} else {
+					// Start a new streak
+					if (pseudoLargeStreakVisual[0] < pseudoLargeStreak) {
+						pseudoLargeStreakVisual[0] = pseudoLargeStreak + 1
+						pseudoLargeStreakVisual[1] = pseudoLargeData[i - 1]
+					}
+					if (pseudoLargeStreakData[pseudoLargeStreak]) {
+						pseudoLargeStreakData[pseudoLargeStreak] = pseudoLargeStreakData[pseudoLargeStreak] + 1
+					} else {
+						pseudoLargeStreakData[pseudoLargeStreak] = 1
+					}
+					pseudoLargeStreak = 0
+				}
+			}
+			if (pseudoLargeStreak) {
 				if (pseudoLargeStreakData[pseudoLargeStreak]) {
 					pseudoLargeStreakData[pseudoLargeStreak] = pseudoLargeStreakData[pseudoLargeStreak] + 1
 				} else {
 					pseudoLargeStreakData[pseudoLargeStreak] = 1
 				}
-				pseudoLargeStreak = 0
 			}
+		} else {
+			pseudoRandomCount = generationController[1][0]
+			pseudoLargeStreakData = generationController[1][1]
+			pseudoLargeStreakVisual = generationController[1][2]
+			computerRandomContextRaw = generationController[1][3]
+			pseudoLargeData = generationController[1][4]
 		}
-		if (pseudoLargeStreak) {
-			if (pseudoLargeStreakData[pseudoLargeStreak]) {
-				pseudoLargeStreakData[pseudoLargeStreak] = pseudoLargeStreakData[pseudoLargeStreak] + 1
-			} else {
-				pseudoLargeStreakData[pseudoLargeStreak] = 1
-			}
-		}
-
 		let largestLengthLarge = Math.max(computerLargeStreakData.length, pseudoLargeStreakData.length)
 
 		for (let i = 0; i < largestLengthLarge; i++) {
 			dynamicLabelsLarge[i] = i + 1
 		}
-
 		computerLargeVisual.length = computerLargeStreakData.length
 		computerLargeVisual.fill(computerLargeStreakVisual[1])
-
 		pseudoLargeVisual.length = pseudoLargeStreakData.length
 		pseudoLargeVisual.fill(pseudoLargeStreakVisual[1])
-
-		// computerLargeVisual.length = computerLargeStreakVisual[0]
-		// computerLargeVisual.fill(computerLargeStreakVisual[1])
-
-		// pseudoLargeVisual.length = pseudoLargeStreakVisual[0]
-		// pseudoLargeVisual.fill(pseudoLargeStreakVisual[1])
 
 		loadSwitch = 0
 	}
@@ -277,18 +282,31 @@ export default function Stage3({
 		}
 	}
 
-	const computerLargeStreak = () => {
+	const computerLargeStreakFunc = () => {
+		setPreviousPseudo([
+			pseudoRandomCount,
+			pseudoLargeStreakData,
+			pseudoLargeStreakVisual,
+			computerRandomContextRaw,
+			pseudoLargeData,
+		])
 		setSideTrackChoice([computerRandomContextRaw, computerLargeVisual])
 		nextStage()
 	}
 
-	const pseudoLargeStreak = () => {
+	const pseudoLargeStreakFunc = () => {
+		setPreviousPseudo([
+			pseudoRandomCount,
+			pseudoLargeStreakData,
+			pseudoLargeStreakVisual,
+			computerRandomContextRaw,
+			pseudoLargeData,
+		])
 		setSideTrackChoice([pseudoLargeData, pseudoLargeVisual])
 		nextStage()
 	}
 
 	if (loadSwitch) {
-		console.log('it got here')
 		return (
 			<>
 				<Head>
@@ -323,17 +341,17 @@ export default function Stage3({
 					</div>
 					<div className="barGraph3">
 						<h1>True Random</h1>
-						<div onClick={computerLargeStreak} id="computerLargeStreak">
+						<div onClick={computerLargeStreakFunc} id="computerLargeStreak">
 							Longest Streak: {computerLargeVisual}
 						</div>
 						<h1>Pseudo-random</h1>
-						<div onClick={pseudoLargeStreak} id="pseudoLargeStreak">
+						<div onClick={pseudoLargeStreakFunc} id="pseudoLargeStreak">
 							Longest Streak: {pseudoLargeVisual}
 						</div>
 					</div>
 					<div className="barGraph3">
 						<h1>Options</h1>
-						<Button nextStage={reroll} text={'Reroll'}></Button>
+						<Button stageControl={reroll} text={'Reroll'}></Button>
 						<input
 							type="text"
 							placeholder="How many?"
@@ -346,7 +364,7 @@ export default function Stage3({
 						></input>
 					</div>
 					<h1>This will be the text you click</h1>
-					<Button nextStage={nextStage} text={'Continue'}></Button>
+					<Button stageControl={nextStage} text={'Continue'}></Button>
 				</div>
 			</>
 		)

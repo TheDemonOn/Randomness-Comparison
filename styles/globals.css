@@ -48,3 +48,10 @@ p {
 	/* border: solid; */
 	/* float: inline-flex; */
 }
+
+#computerLargeStreak:hover {
+	cursor: pointer;
+}
+#pseudoLargeStreak:hover {
+	cursor: pointer;
+}

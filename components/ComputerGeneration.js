@@ -49,13 +49,26 @@ function ComputerGeneration({
 
 	if (consistent === 1) {
 		consistencySwitch = useContext(ConsistentResult)
+		console.log(consistencySwitch)
+		consistencySwitch[0]
 	}
+	// The issue is that
 
 	// This works with the API
 	useEffect(() => {
-		if (consistent === 1) {
-			console.log(consistencySwitch[0])
+		if (consistencySwitch === null || consistencySwitch === undefined) {
+			// console.log(consistencySwitch[0])
 			// An adittional check to know if we might have to prevent requests
+			fetch('https://api.random.org/json-rpc/4/invoke', options)
+				.then((response) => response.json())
+				.then((data) => {
+					if (large) {
+						setComputerGenerationLarge(data.result.random.data)
+					} else {
+						setComputerGeneration(data.result.random.data)
+					}
+				})
+		} else {
 			if (consistencySwitch[0]) {
 				fetch('https://api.random.org/json-rpc/4/invoke', options)
 					.then((response) => response.json())
@@ -67,16 +80,6 @@ function ComputerGeneration({
 						}
 					})
 			}
-		} else {
-			fetch('https://api.random.org/json-rpc/4/invoke', options)
-				.then((response) => response.json())
-				.then((data) => {
-					if (large) {
-						setComputerGenerationLarge(data.result.random.data)
-					} else {
-						setComputerGeneration(data.result.random.data)
-					}
-				})
 		}
 	}, [])
 

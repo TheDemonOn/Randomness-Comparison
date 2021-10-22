@@ -30,7 +30,11 @@ export default function Stage1({
 				nextStage={nextStage}
 			></HumanCounter>
 
-			<Button humanRandomCount={humanRandomCount} nextStage={nextStage} text={'Continue'}></Button>
+			<Button
+				humanRandomCount={humanRandomCount}
+				stageControl={nextStage}
+				text={'Continue'}
+			></Button>
 		</>
 	)
 }

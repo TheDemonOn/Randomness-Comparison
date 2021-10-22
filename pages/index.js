@@ -7,6 +7,7 @@ import Stage3 from '../components/Stage3'
 import Stage4 from '../components/Stage4'
 import { RandomContext } from '../context/RandomContext'
 import { ConsistentResult } from '../context/ConsistentResult'
+import { unstable_renderSubtreeIntoContainer } from 'react-dom'
 
 export default function Home() {
 	// Human numbers
@@ -23,11 +24,20 @@ export default function Home() {
 	const nextStage = () => {
 		setStage((prev) => prev + 1)
 	}
+	const backStage = () => {
+		setStage((prev) => prev - 1)
+	}
 
 	const [sideTrackChoice, setSideTrackChoice] = useState(0)
 
 	// This will determine which data set to use
 	const [generationControl, setGenerationControl] = useState(1)
+	const stopGeneration = () => {
+		setGenerationControl(0)
+	}
+	const continueGeneration = () => {
+		setGenerationControl(1)
+	}
 
 	const reroll = () => {
 		// This refreshes the component and makes it retrieve new data
@@ -38,7 +48,11 @@ export default function Home() {
 		setTimeout(() => {
 			setStage(currentStage)
 		}, 1)
+		// Set for new generation to be available
+		continueGeneration()
 	}
+
+	const [previousPseudo, setPreviousPseudo] = useState([0])
 
 	switch (stage) {
 		case 1:
@@ -68,8 +82,8 @@ export default function Home() {
 			)
 		case 3:
 			return (
-				// This context [0] prevents new data being fetched while we are sidestepping, [1] will be the longest streaks [2] is psuedoLarge
-				<ConsistentResult.Provider value={[generationControl, [0, 0], [0]]}>
+				// This context [0] prevents new data being fetched while we are sidestepping, [1] is psuedoLarge
+				<ConsistentResult.Provider value={[generationControl, previousPseudo]}>
 					<ComputerGeneration
 						setComputerGenerationLarge={setComputerGenerationLarge}
 						large={large}
@@ -83,6 +97,7 @@ export default function Home() {
 							setLargeCount={setLargeCount}
 							nextStage={nextStage}
 							setSideTrackChoice={setSideTrackChoice}
+							setPreviousPseudo={setPreviousPseudo}
 						></Stage3>
 					</RandomContext.Provider>
 				</ConsistentResult.Provider>
@@ -90,7 +105,12 @@ export default function Home() {
 		case 4:
 			return (
 				<RandomContext.Provider value={[computerGeneration, computerGenerationLarge]}>
-					<Stage4 generationControl={generationControl} sideTrackChoice={sideTrackChoice}></Stage4>
+					<Stage4
+						generationControl={generationControl}
+						sideTrackChoice={sideTrackChoice}
+						backStage={backStage}
+						stopGeneration={stopGeneration}
+					></Stage4>
 				</RandomContext.Provider>
 			)
 		default:

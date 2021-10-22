@@ -10,11 +10,9 @@ function HumanCounter({
 	nextStage,
 }) {
 	const updateHumanCount = (value) => {
-		console.log(value)
 		let numValue = parseInt(value, 10)
 		if (Number.isInteger(numValue)) {
 			setHumanGeneration((prev) => prev + value)
-			console.log(humanGeneration)
 			setHumanRandomCount((prev) => prev + 1)
 			document.getElementById('humanInput').value = ''
 		}
