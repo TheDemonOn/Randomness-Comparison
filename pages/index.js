@@ -13,7 +13,7 @@ export default function Home() {
 	// Human numbers
 	const [humanGeneration, setHumanGeneration] = useState([])
 	// How many numbers were given
-	const [humanRandomCount, setHumanRandomCount] = useState(0)
+	let [humanRandomCount, setHumanRandomCount] = useState(0)
 
 	const [computerGeneration, setComputerGeneration] = useState('123')
 	const [computerGenerationLarge, setComputerGenerationLarge] = useState('123')
