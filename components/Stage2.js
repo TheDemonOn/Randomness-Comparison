@@ -305,8 +305,10 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 		if (e.key === 'Enter') {
 			let num = document.getElementById('largeInput').value
 			let numValue = parseInt(num, 10)
-			setLargeCount(numValue)
-			nextStage()
+			if (numValue > 0) {
+				setLargeCount(numValue)
+				nextStage()
+			}
 		}
 	}
 	const NextButton = () => {

@@ -9,6 +9,8 @@ function HumanCounter({
 	deleteHuman,
 	nextStage,
 }) {
+	// Don't Allow Submit unless humanRandomCount > 0
+
 	const updateHumanCount = (value) => {
 		let numValue = parseInt(value, 10)
 		if (Number.isInteger(numValue)) {
@@ -29,7 +31,9 @@ function HumanCounter({
 
 	const EnterCheck = (e) => {
 		if (e.key === 'Enter') {
-			nextStage()
+			if (humanRandomCount > 0) {
+				nextStage()
+			}
 		}
 	}
 

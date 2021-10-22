@@ -6,11 +6,14 @@ import { ConsistentResult } from '../context/ConsistentResult'
 function ComputerGeneration({
 	setComputerGeneration,
 	setComputerGenerationLarge,
-	humanRandomCount = 100,
+	humanRandomCount = 20,
 	large,
 	largeCount = 10000,
 	consistent = 0,
 }) {
+	if (humanRandomCount === 0) {
+		humanRandomCount = 20
+	}
 	let params = {
 		jsonrpc: '2.0',
 		method: 'generateIntegers',
