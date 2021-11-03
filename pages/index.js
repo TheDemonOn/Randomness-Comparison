@@ -7,7 +7,6 @@ import Stage3 from '../components/Stage3'
 import Stage4 from '../components/Stage4'
 import { RandomContext } from '../context/RandomContext'
 import { ConsistentResult } from '../context/ConsistentResult'
-import { unstable_renderSubtreeIntoContainer } from 'react-dom'
 
 export default function Home() {
 	// Human numbers
