@@ -15,7 +15,7 @@ export default function Stage1({
 	useEffect(() => {
 		if (humanRandomCount > 0) {
 			setHiddenText(
-				<div>
+				<div className="fade">
 					<span>
 						You have typed <h3 className={styles.positioning2}>{humanRandomCount}</h3> ones and
 						zeroes.

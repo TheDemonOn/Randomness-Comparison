@@ -99,7 +99,17 @@ button:before {
 	box-sizing: border-box;
 }
 
-.button {
+.fade {
+	animation-name: fade-in;
+	animation-duration: 500ms;
+}
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 .graphContainer {
