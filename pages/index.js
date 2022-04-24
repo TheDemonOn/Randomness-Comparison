@@ -118,7 +118,7 @@ export default function Home() {
 					<Head>
 						<title>Loading...</title>
 					</Head>
-					<h1>Computing numbers...</h1>
+					<h1>Crunching the numbers...</h1>
 				</>
 			)
 	}

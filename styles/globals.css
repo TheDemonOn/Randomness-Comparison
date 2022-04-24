@@ -76,12 +76,14 @@ input:focus-visible {
 
 button {
 	all: unset;
-	font-style: italic;
 	color: var(--blue);
 	font-weight: bold;
 	position: relative;
 	cursor: pointer;
 	font-size: 1.5rem;
+}
+button:hover {
+	font-style: italic;
 }
 button:before {
 	content: '';
