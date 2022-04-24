@@ -40,6 +40,14 @@ function ComputerGeneration({
 		}
 	}
 
+	let consistencySwitch
+
+	if (consistent === 1) {
+		consistencySwitch = useContext(ConsistentResult)
+		console.log(consistencySwitch)
+		consistencySwitch[0]
+	}
+
 	const options = {
 		method: 'POST',
 		headers: {
@@ -48,20 +56,10 @@ function ComputerGeneration({
 		body: JSON.stringify(params),
 	}
 
-	let consistencySwitch
-
-	if (consistent === 1) {
-		consistencySwitch = useContext(ConsistentResult)
-		console.log(consistencySwitch)
-		consistencySwitch[0]
-	}
-	// The issue is that
-
 	// This works with the API
 	useEffect(() => {
 		if (consistencySwitch === null || consistencySwitch === undefined) {
-			// console.log(consistencySwitch[0])
-			// An adittional check to know if we might have to prevent requests
+			// An additional check to know if we might have to prevent requests
 			fetch('https://api.random.org/json-rpc/4/invoke', options)
 				.then((response) => response.json())
 				.then((data) => {

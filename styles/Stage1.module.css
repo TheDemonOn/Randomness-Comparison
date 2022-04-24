@@ -1,0 +1,23 @@
+.main {
+	display: flex;
+	height: 80vh;
+	/* border: solid; */
+	justify-content: center;
+	align-items: center;
+}
+
+.stage1 {
+	/* border: solid; */
+}
+
+.spacing1 {
+	margin-bottom: 1rem;
+}
+.positioning2 {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.noCumulativeLayoutShift {
+	position: absolute;
+}

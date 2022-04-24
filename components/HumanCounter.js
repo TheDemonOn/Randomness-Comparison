@@ -40,9 +40,11 @@ function HumanCounter({
 	return (
 		<>
 			<input
-				type="text"
+				// type="text"
 				maxLength="2"
 				id="humanInput"
+				className="stage1Input"
+				placeholder="See how random you are, type at least 10 ones and zeroes here."
 				onKeyDown={(e) => {
 					InputSanitizing(e)
 					deleteCheck(e)
