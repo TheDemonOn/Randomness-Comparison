@@ -5,6 +5,7 @@ import { RandomContext } from '../context/RandomContext'
 import Button from './Button'
 import InputSanitizing2 from './InputSanitizing2'
 import { ConsistentResult } from '../context/ConsistentResult'
+import Loading from './Loading'
 
 export default function Stage3({
 	largeCount,
@@ -307,14 +308,7 @@ export default function Stage3({
 	}
 
 	if (loadSwitch) {
-		return (
-			<>
-				<Head>
-					<title>Loading...</title>
-				</Head>
-				<h1>Computing numbers...</h1>
-			</>
-		)
+		return <Loading />
 	} else {
 		return (
 			<>

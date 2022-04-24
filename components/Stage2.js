@@ -4,6 +4,7 @@ import { Bar } from 'react-chartjs-2'
 import { RandomContext } from '../context/RandomContext'
 import InputSanitizing2 from './InputSanitizing2'
 import Button from './Button'
+import Loading from './Loading'
 
 export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 	let loadSwitch = 1
@@ -320,14 +321,7 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 
 	if (loadSwitch) {
 		// Waiting for random numbers from API
-		return (
-			<>
-				<Head>
-					<title>Loading...</title>
-				</Head>
-				<h1>Computing numbers...</h1>
-			</>
-		)
+		return <Loading />
 	} else {
 		return (
 			<>
@@ -336,31 +330,34 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 				</Head>
 				<div className="graphContainer">
 					<div className="barGraph1">
-						<h1>Distribution of 1's and 0's</h1>
-						<h1>Human Random</h1>
-						<h1>{humanGeneration}</h1>
+						<h2>Distribution of 1's and 0's</h2>
+						<p>How many times each number appeared.</p>
+						<h2>Human Random</h2>
+						<p>{humanGeneration}</p>
 						<Bar data={humanBarData} options={options}></Bar>
-						<h1>True Random</h1>
-						<h1>{useContext(RandomContext)[0]}</h1>
+						<h2>True Random</h2>
+						<p>{useContext(RandomContext)[0]}</p>
 						<Bar data={computerBarData} options={options}></Bar>
-						<h1>Pseudo-random</h1>
-						<h1>{pseudoDataRaw}</h1>
+						<h2>Pseudo-random</h2>
+						<p>{pseudoDataRaw}</p>
 						<Bar data={pseudoBarData} options={options}></Bar>
 					</div>
 					<div className="barGraph2">
-						<h1>Distribution of streaks</h1>
-						<h1>Human Random</h1>
-						<h1>place</h1>
+						<h2>Distribution of streaks</h2>
+						<p>How many streaks of a certain amount that appeared.</p>
+						<h2>Human Random</h2>
+						<p>{humanGeneration}</p>
 						<Bar data={humanStreakBarData} options={options}></Bar>
-						<h1>True Random</h1>
-						<h1>place</h1>
+						<h2>True Random</h2>
+						<p>{useContext(RandomContext)[0]}</p>
 						<Bar data={computerStreakBarData} options={options}></Bar>
-						<h1>Pseudo-random</h1>
-						<h1>place</h1>
+						<h2>Pseudo-random</h2>
+						<p>{pseudoDataRaw}</p>
 						<Bar data={pseudoStreakBarData} options={options}></Bar>
 					</div>
 					<div className="barGraph3">
-						See what these graphs look like with large sample sizes!
+						<h1>True vs Pseudo-random</h1>
+						<p>See the difference between true random and pseudo-random at larger sample sizes.</p>
 						<input
 							type="text"
 							placeholder="How many 0's and 1's?"

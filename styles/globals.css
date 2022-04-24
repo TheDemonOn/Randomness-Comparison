@@ -130,7 +130,6 @@ button:before {
 
 .barGraph3 {
 	border: solid;
-	width: 16em;
 }
 
 .sideTrack {
@@ -155,4 +154,12 @@ button:before {
 .stage1Input {
 	width: 90vw;
 	max-width: 35rem;
+}
+
+.loadingScreen {
+	display: flex;
+	height: 85vh;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
 }

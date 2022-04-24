@@ -7,6 +7,7 @@ import Stage3 from '../components/Stage3'
 import Stage4 from '../components/Stage4'
 import { RandomContext } from '../context/RandomContext'
 import { ConsistentResult } from '../context/ConsistentResult'
+import Loading from '../components/Loading'
 
 export default function Home() {
 	// Human numbers
@@ -113,15 +114,6 @@ export default function Home() {
 				</RandomContext.Provider>
 			)
 		default:
-			return (
-				<>
-					<Head>
-						<title>Loading...</title>
-					</Head>
-					<h1>Crunching the numbers...</h1>
-				</>
-			)
+			return <Loading />
 	}
-
-	return <></>
 }
