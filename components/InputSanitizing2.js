@@ -6,7 +6,8 @@ export default function InputSanitizing2(e) {
 		e.key === 'Backspace' ||
 		e.key === 'Delete' ||
 		e.key === 'ArrowLeft' ||
-		e.key === 'ArrowRight'
+		e.key === 'ArrowRight' ||
+		e.key === 'Tab'
 	) {
 		return true
 	} else {

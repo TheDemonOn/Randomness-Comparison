@@ -328,49 +328,58 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 				<Head>
 					<title>Your Results</title>
 				</Head>
-				<div className="graphContainer">
-					<div className="barGraph1">
-						<h2>Distribution of 1's and 0's</h2>
-						<p>How many times each number appeared.</p>
-						<h2>Human Random</h2>
-						<p>{humanGeneration}</p>
-						<Bar data={humanBarData} options={options}></Bar>
-						<h2>True Random</h2>
-						<p>{useContext(RandomContext)[0]}</p>
-						<Bar data={computerBarData} options={options}></Bar>
-						<h2>Pseudo-random</h2>
-						<p>{pseudoDataRaw}</p>
-						<Bar data={pseudoBarData} options={options}></Bar>
+				<main className="stage2Main">
+					<div className="graphContainer">
+						<div className="barGraph1">
+							<h2>Distribution of 1's and 0's</h2>
+							<p>How many times each number appeared.</p>
+							<h2>Human Random</h2>
+							<p>{humanGeneration}</p>
+							<Bar data={humanBarData} options={options}></Bar>
+							<h2>True Random</h2>
+							<p>{useContext(RandomContext)[0]}</p>
+							<Bar data={computerBarData} options={options}></Bar>
+							<h2>Pseudo-random</h2>
+							<p>{pseudoDataRaw}</p>
+							<Bar data={pseudoBarData} options={options}></Bar>
+						</div>
+						<div className="barGraph2">
+							<h2>Distribution of streaks</h2>
+							<p>How many streaks of a certain amount that appeared.</p>
+							<h2>Human Random</h2>
+							<p>{humanGeneration}</p>
+							<Bar data={humanStreakBarData} options={options}></Bar>
+							<h2>True Random</h2>
+							<p>{useContext(RandomContext)[0]}</p>
+							<Bar data={computerStreakBarData} options={options}></Bar>
+							<h2>Pseudo-random</h2>
+							<p>{pseudoDataRaw}</p>
+							<Bar data={pseudoStreakBarData} options={options}></Bar>
+						</div>
+						<div className="barGraph3">
+							<h1>True vs Pseudo-random</h1>
+							<p>
+								See the difference between true random and pseudo-random at larger sample sizes.
+							</p>
+							<input
+								type="text"
+								placeholder="How many 0's and 1's?"
+								maxLength="4"
+								id="largeInput"
+								className="stage2Input"
+								onKeyDown={(e) => {
+									InputSanitizing2(e)
+									EnterCheck(e)
+								}}
+							></input>
+							<Button
+								stageControl={NextButton}
+								text={'Continue'}
+								className={'stage2Button'}
+							></Button>
+						</div>
 					</div>
-					<div className="barGraph2">
-						<h2>Distribution of streaks</h2>
-						<p>How many streaks of a certain amount that appeared.</p>
-						<h2>Human Random</h2>
-						<p>{humanGeneration}</p>
-						<Bar data={humanStreakBarData} options={options}></Bar>
-						<h2>True Random</h2>
-						<p>{useContext(RandomContext)[0]}</p>
-						<Bar data={computerStreakBarData} options={options}></Bar>
-						<h2>Pseudo-random</h2>
-						<p>{pseudoDataRaw}</p>
-						<Bar data={pseudoStreakBarData} options={options}></Bar>
-					</div>
-					<div className="barGraph3">
-						<h1>True vs Pseudo-random</h1>
-						<p>See the difference between true random and pseudo-random at larger sample sizes.</p>
-						<input
-							type="text"
-							placeholder="How many 0's and 1's?"
-							maxLength="4"
-							id="largeInput"
-							onKeyDown={(e) => {
-								InputSanitizing2(e)
-								EnterCheck(e)
-							}}
-						></input>
-						<Button stageControl={NextButton} text={'Continue'}></Button>
-					</div>
-				</div>
+				</main>
 			</>
 		)
 	}
