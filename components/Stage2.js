@@ -200,11 +200,17 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 				ticks: {
 					beginAtZero: true,
 					stepSize: 1,
+					color: '#26225D',
 				},
 			},
 			x: {
 				grid: {
 					display: false,
+				},
+				ticks: {
+					beginAtZero: true,
+					stepSize: 1,
+					color: '#26225D',
 				},
 			},
 		},
@@ -213,7 +219,6 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 				display: false,
 			},
 		},
-		elements: {},
 	}
 
 	const EnterCheck = (e) => {
