@@ -70,6 +70,10 @@ span h3 {
 }
 p {
 	color: var(--blue);
+	font-family: freight-display-pro, serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 1.1rem;
 }
 
 a {
@@ -139,17 +143,11 @@ button:before {
 }
 
 .barGraph1 {
-	border: solid;
-	width: 30em;
+	/* border: solid; */
 }
 
 .barGraph2 {
-	border: solid;
-	width: 30em;
-}
-
-.barGraph3 {
-	border: solid;
+	/* border: solid; */
 }
 
 .sideTrack {
@@ -186,17 +184,29 @@ button:before {
 
 .stage2Main {
 	width: 80vw;
+	min-height: 150vh;
 	position: absolute;
 	width: min(90%);
 	left: 0;
 	right: 0;
 	margin-inline: auto;
+	margin-top: 3rem;
 }
 
 .stage2Input {
-	margin-top: 1rem;
+	margin-top: 0.8rem;
+	width: 97%;
 }
 .stage2Button {
 	display: block;
 	margin-top: 1rem;
+}
+
+.generateBox {
+	/* border: solid; */
+	width: 22rem;
+	height: fit-content;
+}
+.generateBox h1 {
+	font-size: 2rem;
 }

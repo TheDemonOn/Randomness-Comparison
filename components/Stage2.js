@@ -130,23 +130,7 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 			{
 				label: '# of that number appearing',
 				data: computerData,
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)',
-				],
-				borderWidth: 1,
+				backgroundColor: ['#DA4127', '#F0CA1C'],
 			},
 		],
 	}
@@ -157,23 +141,7 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 			{
 				label: 'Amount of times that streak appeared',
 				data: computerStreakData,
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)',
-				],
-				borderWidth: 1,
+				backgroundColor: ['#DA4127', '#F0CA1C'],
 			},
 		],
 	}
@@ -184,23 +152,7 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 			{
 				label: '# of that number appearing',
 				data: humanData,
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)',
-				],
-				borderWidth: 1,
+				backgroundColor: ['#DA4127', '#F0CA1C'],
 			},
 		],
 	}
@@ -211,23 +163,7 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 			{
 				label: 'Amount of times that streak appeared',
 				data: humanStreakData,
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)',
-				],
-				borderWidth: 1,
+				backgroundColor: ['#DA4127', '#F0CA1C'],
 			},
 		],
 	}
@@ -238,23 +174,7 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 			{
 				label: '# of that number appearing',
 				data: pseudoData,
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)',
-				],
-				borderWidth: 1,
+				backgroundColor: ['#DA4127', '#F0CA1C'],
 			},
 		],
 	}
@@ -265,23 +185,7 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 			{
 				label: 'Amount of times that streak appeared',
 				data: pseudoStreakData,
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)',
-				],
-				borderWidth: 1,
+				backgroundColor: ['#DA4127', '#F0CA1C'],
 			},
 		],
 	}
@@ -293,6 +197,10 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 				grid: {
 					display: false,
 				},
+				ticks: {
+					beginAtZero: true,
+					stepSize: 1,
+				},
 			},
 			x: {
 				grid: {
@@ -300,6 +208,12 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 				},
 			},
 		},
+		plugins: {
+			legend: {
+				display: false,
+			},
+		},
+		elements: {},
 	}
 
 	const EnterCheck = (e) => {
@@ -356,14 +270,15 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 							<p>{pseudoDataRaw}</p>
 							<Bar data={pseudoStreakBarData} options={options}></Bar>
 						</div>
-						<div className="barGraph3">
+						<div className="generateBox">
 							<h1>True vs Pseudo-random</h1>
 							<p>
-								See the difference between true random and pseudo-random at larger sample sizes.
+								See how true random compares to pseudo-random at larger scales! Type how many
+								numbers should be generated.
 							</p>
 							<input
 								type="text"
-								placeholder="How many 0's and 1's?"
+								placeholder="Type any number up to 9999"
 								maxLength="4"
 								id="largeInput"
 								className="stage2Input"
@@ -374,7 +289,7 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 							></input>
 							<Button
 								stageControl={NextButton}
-								text={'Continue'}
+								text={'Generate'}
 								className={'stage2Button'}
 							></Button>
 						</div>
