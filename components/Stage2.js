@@ -5,6 +5,7 @@ import { RandomContext } from '../context/RandomContext'
 import InputSanitizing2 from './InputSanitizing2'
 import Button from './Button'
 import Loading from './Loading'
+import ZeroOne from './ZeroOne'
 
 export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 	let loadSwitch = 1
@@ -253,29 +254,45 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 				<main className="stage2Main">
 					<div className="graphContainer">
 						<div className="barGraph1">
-							<h2>Distribution of 1's and 0's</h2>
-							<p>How many times each number appeared.</p>
-							<h2>Human Random</h2>
-							<p>{humanGeneration}</p>
+							<div className="space more">
+								<h1>Distribution of 1's and 0's</h1>
+								<p>How many times each number appeared.</p>
+							</div>
+							<div className="space">
+								<h2>Human Random</h2>
+								<ZeroOne input={humanGeneration} />
+							</div>
 							<Bar data={humanBarData} options={options}></Bar>
-							<h2>True Random</h2>
-							<p>{useContext(RandomContext)[0]}</p>
+							<div className="space">
+								<h2>True Random</h2>
+								<ZeroOne input={useContext(RandomContext)[0]} />
+							</div>
 							<Bar data={computerBarData} options={options}></Bar>
-							<h2>Pseudo-random</h2>
-							<p>{pseudoDataRaw}</p>
+							<div className="space">
+								<h2>Pseudo-random</h2>
+								<ZeroOne input={pseudoDataRaw} />
+							</div>
 							<Bar data={pseudoBarData} options={options}></Bar>
 						</div>
 						<div className="barGraph2">
-							<h2>Distribution of streaks</h2>
-							<p>How many streaks of a certain amount that appeared.</p>
-							<h2>Human Random</h2>
-							<p>{humanGeneration}</p>
+							<div className="space more">
+								<h1>Distribution of streaks</h1>
+								<p>How many streaks of a certain amount that appeared.</p>
+							</div>
+							<div className="space">
+								<h2>Human Random</h2>
+								<ZeroOne input={humanGeneration} />
+							</div>
 							<Bar data={humanStreakBarData} options={options}></Bar>
-							<h2>True Random</h2>
-							<p>{useContext(RandomContext)[0]}</p>
+							<div className="space">
+								<h2>True Random</h2>
+								<ZeroOne input={useContext(RandomContext)[0]} />
+							</div>
 							<Bar data={computerStreakBarData} options={options}></Bar>
-							<h2>Pseudo-random</h2>
-							<p>{pseudoDataRaw}</p>
+							<div className="space">
+								<h2>Pseudo-random</h2>
+								<ZeroOne input={pseudoDataRaw} />
+							</div>
 							<Bar data={pseudoStreakBarData} options={options}></Bar>
 						</div>
 						<div className="generateBox">

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Head from 'next/head'
+import Chart from 'react-chartjs-2'
 import { Bar } from 'react-chartjs-2'
 import { RandomContext } from '../context/RandomContext'
 import Button from './Button'
@@ -16,8 +17,6 @@ export default function Stage3({
 	setPreviousPseudo,
 }) {
 	let generationController = useContext(ConsistentResult)
-	console.log(generationController)
-
 	let computerRandomContextRaw = useContext(RandomContext)[1]
 
 	let loadSwitch = 1
@@ -85,7 +84,6 @@ export default function Stage3({
 		var pseudoLargeStreakVisual = [0, 0]
 
 		if (generationController[0] === 1) {
-			console.log('Does this happen Desuka')
 			// Pseudo-Random Large
 			for (let i = 0; i < largeCount; i++) {
 				let random = Math.floor(Math.random() * 2)
@@ -154,23 +152,7 @@ export default function Stage3({
 			{
 				label: '# of that number appearing',
 				data: trueRandomCount,
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)',
-				],
-				borderWidth: 1,
+				backgroundColor: ['#DA4127', '#F0CA1C'],
 			},
 		],
 	}
@@ -181,23 +163,15 @@ export default function Stage3({
 			{
 				label: 'Amount of times that streak appeared',
 				data: computerLargeStreakData,
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)',
-				],
-				borderWidth: 1,
+				backgroundColor: ['#DA4127', '#F0CA1C'],
+				order: 2,
+			},
+			{
+				label: 'Amount of times that streak appeared',
+				data: computerLargeStreakData,
+				backgroundColor: ['#DA4127', '#F0CA1C'],
+				type: 'line',
+				order: 1,
 			},
 		],
 	}
@@ -208,23 +182,7 @@ export default function Stage3({
 			{
 				label: '# of that number appearing',
 				data: pseudoRandomCount,
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)',
-				],
-				borderWidth: 1,
+				backgroundColor: ['#DA4127', '#F0CA1C'],
 			},
 		],
 	}
@@ -233,41 +191,55 @@ export default function Stage3({
 		labels: dynamicLabelsLarge,
 		datasets: [
 			{
-				label: '# of that number appearing',
+				label: 'Amount of times that streak appeared',
 				data: pseudoLargeStreakData,
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(255, 159, 64, 1)',
-				],
-				borderWidth: 1,
+				backgroundColor: ['#DA4127', '#F0CA1C'],
+				order: 2,
+			},
+			{
+				label: 'Amount of times that streak appeared',
+				data: pseudoLargeStreakData,
+				backgroundColor: ['#DA4127', '#F0CA1C'],
+				type: 'line',
+				order: 1,
 			},
 		],
 	}
 
 	const options = {
+		elements: {
+			line: {
+				borderWidth: 0,
+			},
+		},
 		responsive: true,
 		scales: {
 			y: {
 				grid: {
 					display: false,
+					borderColor: '#26225D',
+					borderWidth: 1,
+				},
+				ticks: {
+					beginAtZero: true,
+					color: '#26225D',
 				},
 			},
 			x: {
 				grid: {
 					display: false,
+					borderColor: '#26225D',
 				},
+				ticks: {
+					beginAtZero: true,
+					stepSize: 1,
+					color: '#26225D',
+				},
+			},
+		},
+		plugins: {
+			legend: {
+				display: false,
 			},
 		},
 	}
@@ -315,51 +287,68 @@ export default function Stage3({
 				<Head>
 					<title>Large Results</title>
 				</Head>
-				<div>Hi</div>
-				<div className="graphContainer">
-					<div className="barGraph1">
-						<h1>Distribution of 1's and 0's</h1>
-						<h1>True Random</h1>
-						<Bar data={computerLargeCount} options={options}></Bar>
-						<h1>Pseudo-random</h1>
-						<Bar data={pseudoLargeCount} options={options}></Bar>
-					</div>
-					<div className="barGraph2">
-						<h1>Distributions with larger size</h1>
-						<h1>True Random</h1>
-						{/* <h1>Too large</h1> */}
-						<Bar data={computerLarge} options={options}></Bar>
-						<h1>Pseudo-random</h1>
-						{/* <h1>Too large</h1> */}
-						<Bar data={pseudoLarge} options={options}></Bar>
-					</div>
-					<div className="barGraph3">
-						<h1>True Random</h1>
-						<div onClick={computerLargeStreakFunc} id="computerLargeStreak">
-							Longest Streak: {computerLargeVisual}
+				<main className="stage3Main">
+					<div className="graphContainer">
+						<div className="barGraph1">
+							<div className="space more">
+								<h1>Distribution of 1's and 0's</h1>
+								<p>How many times each number appeared.</p>
+							</div>
+							<h2 className="space">True Random</h2>
+							<Bar data={computerLargeCount} options={options}></Bar>
+							<h2 className="space">Pseudo-random</h2>
+							<Bar data={pseudoLargeCount} options={options}></Bar>
 						</div>
-						<h1>Pseudo-random</h1>
-						<div onClick={pseudoLargeStreakFunc} id="pseudoLargeStreak">
-							Longest Streak: {pseudoLargeVisual}
+						<div className="barGraph2">
+							<div className="space more">
+								<h1>Distributions of streaks</h1>
+								<p>How many streaks of a certain amount that appeared.</p>
+							</div>
+							<h2 className="space">True Random</h2>
+							<Chart type="bar" data={computerLarge} options={options} />
+							<h2 className="space">Pseudo-random</h2>
+							<Chart type="bar" data={pseudoLarge} options={options} />
+						</div>
+						<div className="barGraph3">
+							<div className="space more">
+								<h1>Longest Streak</h1>
+								<p>The highest consecutive string in a row.</p>
+							</div>
+							<div className="space more">
+								<h2>True Random</h2>
+								<div onClick={computerLargeStreakFunc} id="computerLargeStreak">
+									<p className="hoverNums">
+										{computerLargeVisual.length}: {computerLargeVisual}
+									</p>
+								</div>
+							</div>
+							<div className="space more">
+								<h2>Pseudo-random</h2>
+								<div onClick={pseudoLargeStreakFunc} id="pseudoLargeStreak">
+									<p className="hoverNums">
+										{pseudoLargeVisual.length}: {pseudoLargeVisual}
+									</p>
+								</div>
+							</div>
+							<div className="generateBox ">
+								<h1>True vs Pseudo-random</h1>
+								<p>Generate some more here.</p>
+								<input
+									type="text"
+									placeholder="Type any number up to 9999"
+									className="stage2Input"
+									maxLength="4"
+									id="rerollInput"
+									onKeyDown={(e) => {
+										InputSanitizing2(e)
+										EnterCheck(e)
+									}}
+								></input>
+								<Button stageControl={reroll} className="stage2Button" text={'Generate'}></Button>
+							</div>
 						</div>
 					</div>
-					<div className="barGraph3">
-						<h1>Options</h1>
-						<Button stageControl={reroll} text={'Reroll'}></Button>
-						<input
-							type="text"
-							placeholder="How many?"
-							maxLength="4"
-							id="rerollInput"
-							onKeyDown={(e) => {
-								InputSanitizing2(e)
-								EnterCheck(e)
-							}}
-						></input>
-					</div>
-					<h1>This will be the text you click</h1>
-					<Button stageControl={nextStage} text={'Continue'}></Button>
-				</div>
+				</main>
 			</>
 		)
 	}

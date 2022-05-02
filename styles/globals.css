@@ -41,7 +41,7 @@ p {
 
 h1 {
 	color: var(--red);
-	font-size: 3rem;
+	font-size: 2rem;
 	font-family: freight-big-pro, serif;
 	font-weight: 900;
 	font-style: normal;
@@ -140,6 +140,16 @@ button:before {
 
 .graphContainer {
 	display: flex;
+	justify-content: space-between;
+}
+
+.space {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.more {
+	margin-bottom: 2rem;
 }
 
 .barGraph1 {
@@ -151,9 +161,9 @@ button:before {
 }
 
 .sideTrack {
-	/* border: solid; */
 	word-break: break-all;
 	font-size: 1.5em;
+	padding: 1rem 0;
 }
 
 #streak {
@@ -181,12 +191,15 @@ button:before {
 	justify-content: center;
 	align-items: center;
 }
+.loadingScreen h1 {
+	font-size: 3rem;
+}
 
 .stage2Main {
 	width: 80vw;
 	min-height: 150vh;
 	position: absolute;
-	width: min(90%);
+	width: min(88%);
 	left: 0;
 	right: 0;
 	margin-inline: auto;
@@ -202,11 +215,29 @@ button:before {
 	margin-top: 1rem;
 }
 
+.stage3Main {
+	width: 80vw;
+	min-height: 90vh;
+	position: absolute;
+	width: min(88%);
+	left: 0;
+	right: 0;
+	margin-inline: auto;
+	margin-top: 3rem;
+}
+
 .generateBox {
-	/* border: solid; */
 	width: 22rem;
 	height: fit-content;
 }
 .generateBox h1 {
 	font-size: 2rem;
+}
+
+.highlighted {
+	background-color: var(--yellow);
+}
+
+.hoverNums:hover {
+	color: var(--red);
 }

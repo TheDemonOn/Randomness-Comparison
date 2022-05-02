@@ -6,8 +6,8 @@
 	align-items: center;
 }
 
-.stage1 {
-	/* border: solid; */
+.stage1 h1 {
+	font-size: 3rem;
 }
 
 .spacing1 {
