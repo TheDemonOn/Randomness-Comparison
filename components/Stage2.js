@@ -193,10 +193,13 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 
 	const options = {
 		responsive: true,
+		maintainAspectRatio: true,
 		scales: {
 			y: {
 				grid: {
 					display: false,
+					borderColor: '#26225D',
+					borderWidth: 1,
 				},
 				ticks: {
 					beginAtZero: true,
@@ -207,6 +210,7 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 			x: {
 				grid: {
 					display: false,
+					borderColor: '#26225D',
 				},
 				ticks: {
 					beginAtZero: true,

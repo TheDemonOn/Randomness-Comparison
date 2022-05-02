@@ -313,6 +313,7 @@ export default function Stage3({
 							<div className="space more">
 								<h1>Longest Streak</h1>
 								<p>The highest consecutive string in a row.</p>
+								<p>Click on the streak below to visualize it!</p>
 							</div>
 							<div className="space more">
 								<h2>True Random</h2>

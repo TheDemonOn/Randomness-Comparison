@@ -37,14 +37,35 @@ function HumanCounter({
 		}
 	}
 
+	const [placeHolder, setPlaceHolder] = useState()
+
+	useEffect(() => {
+		if (window.innerWidth <= 500) {
+			setPlaceHolder('Type some ones and zeroes randomly!')
+		} else {
+			setPlaceHolder('See how random you are, type at least 10 ones and zeroes here.')
+		}
+
+		const updateWindowDimensions = () => {
+			if (window.innerWidth <= 500) {
+				setPlaceHolder('Type some ones and zeroes randomly!')
+			} else {
+				setPlaceHolder('See how random you are, type at least 10 ones and zeroes here.')
+			}
+		}
+
+		window.addEventListener('resize', updateWindowDimensions)
+
+		return () => window.removeEventListener('resize', updateWindowDimensions)
+	}, [])
+
 	return (
 		<>
 			<input
-				// type="text"
 				maxLength="2"
 				id="humanInput"
 				className="stage1Input"
-				placeholder="See how random you are, type at least 10 ones and zeroes here."
+				placeholder={placeHolder}
 				onKeyDown={(e) => {
 					InputSanitizing(e)
 					deleteCheck(e)
@@ -57,5 +78,3 @@ function HumanCounter({
 }
 
 export default HumanCounter
-
-// Use rf to shortcut components

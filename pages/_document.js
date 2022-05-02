@@ -10,6 +10,7 @@ class MyDocument extends Document {
 					<meta name="keywords" content="Antonio, portfolio, front end development, random, api" />
 					<meta name="language" content="English" />
 					<link rel="stylesheet" href="https://use.typekit.net/eua5kgz.css" />
+					<meta name="viewport" content="width=device-width, initial-scale=1" />
 				</Head>
 				<body>
 					<Main />

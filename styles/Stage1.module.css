@@ -1,9 +1,13 @@
 .main {
 	display: flex;
 	height: 80vh;
-	/* border: solid; */
 	justify-content: center;
 	align-items: center;
+	position: absolute;
+	width: min(88%);
+	left: 0;
+	right: 0;
+	margin-inline: auto;
 }
 
 .stage1 h1 {

@@ -153,11 +153,11 @@ button:before {
 }
 
 .barGraph1 {
-	/* border: solid; */
+	max-width: 33vw;
 }
 
 .barGraph2 {
-	/* border: solid; */
+	max-width: 33vw;
 }
 
 .sideTrack {
@@ -217,7 +217,7 @@ button:before {
 
 .stage3Main {
 	width: 80vw;
-	min-height: 90vh;
+	min-height: 100vh;
 	position: absolute;
 	width: min(88%);
 	left: 0;
@@ -240,4 +240,28 @@ button:before {
 
 .hoverNums:hover {
 	color: var(--red);
+}
+
+@media (max-width: 1300px) {
+	.graphContainer {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+	}
+	.generateBox {
+		margin: 2rem 0;
+	}
+	.barGraph1 {
+		max-width: unset;
+	}
+
+	.barGraph2 {
+		max-width: unset;
+	}
+}
+
+@media (max-width: 500px) {
+	.loadingScreen h1 {
+		font-size: 2rem;
+	}
 }
