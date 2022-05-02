@@ -229,6 +229,7 @@ button:before {
 .generateBox {
 	width: 22rem;
 	height: fit-content;
+	margin-top: 1rem;
 }
 .generateBox h1 {
 	font-size: 2rem;
@@ -249,6 +250,7 @@ button:before {
 		flex-direction: column;
 	}
 	.generateBox {
+		margin-top: unset;
 		margin: 2rem 0;
 	}
 	.barGraph1 {
