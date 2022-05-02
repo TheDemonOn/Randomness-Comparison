@@ -148,6 +148,10 @@ button:before {
 	margin-bottom: 1rem;
 }
 
+.moreSpace {
+	margin-top: 2rem;
+}
+
 .more {
 	margin-bottom: 2rem;
 }

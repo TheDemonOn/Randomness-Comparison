@@ -321,6 +321,20 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 								text={'Generate'}
 								className={'stage2Button'}
 							></Button>
+							<div className="space moreSpace">
+								<h1>Generation Methods</h1>
+								<div className="space">
+									<h2>True Random</h2>
+									<p>True random is random.org's usage of atmospheric noise to generate values.</p>
+								</div>
+								<div>
+									<h2>Pseudo-random</h2>
+									<p>
+										Pseudo-random uses Javascript's Math.random function to produce the pseudo
+										values.
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</main>
