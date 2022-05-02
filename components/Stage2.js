@@ -234,6 +234,9 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 	const NextButton = () => {
 		let num = document.getElementById('largeInput').value
 		let numValue = parseInt(num, 10)
+		if (!numValue) {
+			numValue = 1000
+		}
 		setLargeCount(numValue)
 		nextStage()
 	}
