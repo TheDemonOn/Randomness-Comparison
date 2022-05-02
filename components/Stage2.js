@@ -266,17 +266,31 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 								<h2>Human Random</h2>
 								<ZeroOne input={humanGeneration} />
 							</div>
-							<Bar data={humanBarData} options={options}></Bar>
+							<Bar
+								data={humanBarData}
+								options={options}
+								aria-label={humanData[0] + ' zeroes ' + humanData[1] + ' ones'}
+							></Bar>
 							<div className="space">
 								<h2>True Random</h2>
 								<ZeroOne input={useContext(RandomContext)[0]} />
 							</div>
-							<Bar data={computerBarData} options={options}></Bar>
+
+							<Bar
+								data={computerBarData}
+								options={options}
+								aria-label={computerData[0] + ' zeroes ' + computerData[1] + ' ones'}
+							></Bar>
+
 							<div className="space">
 								<h2>Pseudo-random</h2>
 								<ZeroOne input={pseudoDataRaw} />
 							</div>
-							<Bar data={pseudoBarData} options={options}></Bar>
+							<Bar
+								data={pseudoBarData}
+								options={options}
+								aria-label={pseudoData[0] + ' zeroes ' + pseudoData[1] + ' ones'}
+							></Bar>
 						</div>
 						<div className="barGraph2">
 							<div className="space more">

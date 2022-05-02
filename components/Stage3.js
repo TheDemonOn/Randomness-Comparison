@@ -305,9 +305,13 @@ export default function Stage3({
 								<p>How many streaks of a certain amount that appeared.</p>
 							</div>
 							<h2 className="space">True Random</h2>
-							<Chart type="bar" data={computerLarge} options={options} />
+							<div>
+								<Chart type="bar" data={computerLarge} options={options} />
+							</div>
 							<h2 className="space">Pseudo-random</h2>
-							<Chart type="bar" data={pseudoLarge} options={options} />
+							<div>
+								<Chart type="bar" data={pseudoLarge} options={options} />
+							</div>
 						</div>
 						<div className="barGraph3">
 							<div className="space more">
@@ -317,19 +321,27 @@ export default function Stage3({
 							</div>
 							<div className="space more">
 								<h2>True Random</h2>
-								<div onClick={computerLargeStreakFunc} id="computerLargeStreak">
+								<button
+									className="altButton"
+									onClick={computerLargeStreakFunc}
+									id="computerLargeStreak"
+								>
 									<p className="hoverNums">
 										{computerLargeVisual.length}: {computerLargeVisual}
 									</p>
-								</div>
+								</button>
 							</div>
 							<div className="space more">
 								<h2>Pseudo-random</h2>
-								<div onClick={pseudoLargeStreakFunc} id="pseudoLargeStreak">
+								<button
+									className="altButton"
+									onClick={pseudoLargeStreakFunc}
+									id="pseudoLargeStreak"
+								>
 									<p className="hoverNums">
 										{pseudoLargeVisual.length}: {pseudoLargeVisual}
 									</p>
-								</div>
+								</button>
 							</div>
 							<div className="generateBox ">
 								<h1>True vs Pseudo-random</h1>
