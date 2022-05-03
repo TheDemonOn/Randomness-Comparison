@@ -125,6 +125,13 @@ button:before {
 	box-sizing: border-box;
 }
 
+.loadHoverStyle {
+	font-size: 2rem;
+	color: var(--red);
+	font-family: freight-big-pro, serif;
+	font-style: italic;
+}
+
 .fade {
 	animation-name: fade-in;
 	animation-duration: 500ms;

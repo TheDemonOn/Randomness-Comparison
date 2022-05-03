@@ -10,12 +10,6 @@ function MyApp({ Component, pageProps }) {
 				<meta name="keywords" content="Antonio, portfolio, front end development, random, api" />
 				<meta name="language" content="English" />
 				<link rel="stylesheet" href="https://use.typekit.net/eua5kgz.css" />
-				<link
-					rel="preload"
-					href="https://use.typekit.net/eua5kgz.css"
-					as="style"
-					crossOrigin="true"
-				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
 			<Component {...pageProps} />

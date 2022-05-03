@@ -10,7 +10,9 @@ export default function Loading() {
 
 			<main className="loadingScreen">
 				<div>
-					<h1>Crunching the numbers...</h1>
+					<h1>
+						Crunching the numbers<span className="loadHoverStyle">...</span>
+					</h1>
 				</div>
 			</main>
 		</>
