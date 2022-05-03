@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import Head from 'next/head'
 import Chart from 'react-chartjs-2'
 import { Bar } from 'react-chartjs-2'
@@ -33,12 +33,12 @@ export default function Stage3({
 	let computerLargeVisual = []
 	let pseudoLargeVisual = []
 
+	let computerLargeDataRaw = useContext(RandomContext)[1]
+
 	if (useContext(RandomContext)[1] === '123') {
 		// wait
 	} else {
 		// True Random Large
-		let computerLargeDataRaw = useContext(RandomContext)[1]
-
 		computerLargeDataRaw.forEach((e) => {
 			switch (e) {
 				case 0:

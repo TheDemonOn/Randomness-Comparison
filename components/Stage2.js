@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import Head from 'next/head'
 import { Bar } from 'react-chartjs-2'
 import { RandomContext } from '../context/RandomContext'
@@ -21,10 +21,11 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 
 	let dynamicLabels = [-99]
 
+	let unprocessedData = useContext(RandomContext)[0]
+
 	if (useContext(RandomContext)[0] === '123') {
 		// wait
 	} else {
-		let unprocessedData = useContext(RandomContext)[0]
 		let unprocessedHumanData = humanGeneration
 		// True Random
 		unprocessedData.forEach((e) => {
@@ -273,7 +274,7 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 							></Bar>
 							<div className="space">
 								<h2>True Random</h2>
-								<ZeroOne input={useContext(RandomContext)[0]} />
+								<ZeroOne input={unprocessedData} />
 							</div>
 
 							<Bar
@@ -304,7 +305,7 @@ export default function Stage2({ humanGeneration, setLargeCount, nextStage }) {
 							<Bar data={humanStreakBarData} options={options}></Bar>
 							<div className="space">
 								<h2>True Random</h2>
-								<ZeroOne input={useContext(RandomContext)[0]} />
+								<ZeroOne input={unprocessedData} />
 							</div>
 							<Bar data={computerStreakBarData} options={options}></Bar>
 							<div className="space">

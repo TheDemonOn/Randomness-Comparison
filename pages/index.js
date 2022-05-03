@@ -1,5 +1,4 @@
-import React, { useEffect, useState, createContext } from 'react'
-import Head from 'next/head'
+import React, { useState } from 'react'
 import ComputerGeneration from '../components/ComputerGeneration'
 import Stage1 from '../components/Stage1'
 import Stage2 from '../components/Stage2'
@@ -119,14 +118,6 @@ export default function Home({ hiddenKey }) {
 			return <Loading />
 	}
 }
-
-// export async function getStaticProps(context) {
-// 	const key = process.env.KEY
-// 	console.log(key)
-// 	return {
-// 		props: {},
-// 	}
-// }
 
 export async function getStaticProps() {
 	const KEY = process.env.DB_KEY
