@@ -12,6 +12,9 @@ function ComputerGeneration({
 	consistent = 0,
 	hiddenKey,
 }) {
+	if (hiddenKey === null) {
+		return
+	}
 	if (humanRandomCount === 0) {
 		humanRandomCount = 20
 	}
