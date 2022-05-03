@@ -8,7 +8,7 @@ import { RandomContext } from '../context/RandomContext'
 import { ConsistentResult } from '../context/ConsistentResult'
 import Loading from '../components/Loading'
 
-export default function Home({ hiddenKey }) {
+export default function Home({ hiddenKey = null }) {
 	// Human numbers
 	const [humanGeneration, setHumanGeneration] = useState([])
 	// How many numbers were given
