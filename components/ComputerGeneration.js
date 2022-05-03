@@ -12,9 +12,6 @@ function ComputerGeneration({
 	consistent = 0,
 	hiddenKey,
 }) {
-	if (hiddenKey === null) {
-		return <></>
-	}
 	if (humanRandomCount === 0) {
 		humanRandomCount = 20
 	}
@@ -60,19 +57,9 @@ function ComputerGeneration({
 
 	// This works with the API
 	useEffect(() => {
-		if (consistencySwitch === null || consistencySwitch === undefined) {
-			// An additional check to know if we might have to prevent requests
-			fetch('https://api.random.org/json-rpc/4/invoke', options)
-				.then((response) => response.json())
-				.then((data) => {
-					if (large) {
-						setComputerGenerationLarge(data.result.random.data)
-					} else {
-						setComputerGeneration(data.result.random.data)
-					}
-				})
-		} else {
-			if (consistencySwitch[0]) {
+		if (!hiddenKey === null) {
+			if (consistencySwitch === null || consistencySwitch === undefined) {
+				// An additional check to know if we might have to prevent requests
 				fetch('https://api.random.org/json-rpc/4/invoke', options)
 					.then((response) => response.json())
 					.then((data) => {
@@ -82,6 +69,18 @@ function ComputerGeneration({
 							setComputerGeneration(data.result.random.data)
 						}
 					})
+			} else {
+				if (consistencySwitch[0]) {
+					fetch('https://api.random.org/json-rpc/4/invoke', options)
+						.then((response) => response.json())
+						.then((data) => {
+							if (large) {
+								setComputerGenerationLarge(data.result.random.data)
+							} else {
+								setComputerGeneration(data.result.random.data)
+							}
+						})
+				}
 			}
 		}
 	}, [])
