@@ -6,11 +6,8 @@ function HumanCounter({
 	setHumanGeneration,
 	humanRandomCount,
 	setHumanRandomCount,
-	deleteHuman,
 	nextStage,
 }) {
-	// Don't Allow Submit unless humanRandomCount > 0
-
 	const updateHumanCount = (value) => {
 		let numValue = parseInt(value, 10)
 		if (Number.isInteger(numValue)) {

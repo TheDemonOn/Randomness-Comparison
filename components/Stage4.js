@@ -27,7 +27,7 @@ export default function Stage4({ sideTrackChoice, backStage, stopGeneration }) {
 				<title>Visualization</title>
 			</Head>
 
-			<div className="sideTrack">
+			<main className="sideTrack">
 				<Button stageControl={backStage} text={'Back'}></Button>
 				<div>
 					<p>
@@ -39,7 +39,7 @@ export default function Stage4({ sideTrackChoice, backStage, stopGeneration }) {
 					</p>
 				</div>
 				<Button stageControl={backStage} text={'Back'}></Button>
-			</div>
+			</main>
 		</>
 	)
 }

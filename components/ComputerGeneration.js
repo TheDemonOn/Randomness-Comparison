@@ -44,7 +44,6 @@ function ComputerGeneration({
 	let consistencySwitch = useContext(ConsistentResult)
 
 	if (consistent === 1) {
-		// consistencySwitch = useContext(ConsistentResult)
 		consistencySwitch[0]
 	}
 
