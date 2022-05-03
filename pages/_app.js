@@ -9,6 +9,7 @@ function MyApp({ Component, pageProps }) {
 				<meta name="author" content="Antonio Zamora" />
 				<meta name="keywords" content="Antonio, portfolio, front end development, random, api" />
 				<meta name="language" content="English" />
+				<link rel="stylesheet" href="https://use.typekit.net/eua5kgz.css" />
 				<link
 					rel="preload"
 					href="https://use.typekit.net/eua5kgz.css"
