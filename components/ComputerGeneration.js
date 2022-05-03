@@ -13,7 +13,7 @@ function ComputerGeneration({
 	hiddenKey,
 }) {
 	if (hiddenKey === null) {
-		return
+		return <></>
 	}
 	if (humanRandomCount === 0) {
 		humanRandomCount = 20
