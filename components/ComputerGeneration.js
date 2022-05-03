@@ -57,7 +57,7 @@ function ComputerGeneration({
 
 	// This works with the API
 	useEffect(() => {
-		if (!hiddenKey === null) {
+		if (hiddenKey !== null) {
 			if (consistencySwitch === null || consistencySwitch === undefined) {
 				// An additional check to know if we might have to prevent requests
 				fetch('https://api.random.org/json-rpc/4/invoke', options)
