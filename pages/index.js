@@ -9,7 +9,7 @@ import { RandomContext } from '../context/RandomContext'
 import { ConsistentResult } from '../context/ConsistentResult'
 import Loading from '../components/Loading'
 
-export default function Home() {
+export default function Home({ hiddenKey }) {
 	// Human numbers
 	const [humanGeneration, setHumanGeneration] = useState([])
 	// How many numbers were given
@@ -72,6 +72,7 @@ export default function Home() {
 					<ComputerGeneration
 						setComputerGeneration={setComputerGeneration}
 						humanRandomCount={humanRandomCount}
+						hiddenKey={hiddenKey}
 					></ComputerGeneration>
 					<Stage2
 						humanGeneration={humanGeneration}
@@ -89,6 +90,7 @@ export default function Home() {
 						large={large}
 						largeCount={largeCount}
 						consistent={1}
+						hiddenKey={hiddenKey}
 					></ComputerGeneration>
 					<RandomContext.Provider value={[computerGeneration, computerGenerationLarge]}>
 						<Stage3
@@ -115,5 +117,22 @@ export default function Home() {
 			)
 		default:
 			return <Loading />
+	}
+}
+
+// export async function getStaticProps(context) {
+// 	const key = process.env.KEY
+// 	console.log(key)
+// 	return {
+// 		props: {},
+// 	}
+// }
+
+export async function getStaticProps() {
+	const KEY = process.env.DB_KEY
+	return {
+		props: {
+			hiddenKey: KEY,
+		},
 	}
 }

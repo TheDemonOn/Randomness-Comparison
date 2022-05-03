@@ -10,6 +10,7 @@ function ComputerGeneration({
 	large,
 	largeCount = 10000,
 	consistent = 0,
+	hiddenKey,
 }) {
 	if (humanRandomCount === 0) {
 		humanRandomCount = 20
@@ -18,7 +19,7 @@ function ComputerGeneration({
 		jsonrpc: '2.0',
 		method: 'generateIntegers',
 		params: {
-			apiKey: '968fe2bd-3631-45d9-aad2-df49e585b679',
+			apiKey: hiddenKey,
 			n: humanRandomCount,
 			min: 0,
 			max: 1,
@@ -31,7 +32,7 @@ function ComputerGeneration({
 			jsonrpc: '2.0',
 			method: 'generateIntegers',
 			params: {
-				apiKey: '968fe2bd-3631-45d9-aad2-df49e585b679',
+				apiKey: hiddenKey,
 				n: largeCount,
 				min: 0,
 				max: 1,
